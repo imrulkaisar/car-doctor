@@ -23,6 +23,12 @@
   }
 }
 
+@layer components {
+  .container-area {
+    @apply container mx-auto;
+  }
+}
+
 a.active {
   @apply text-primary;
 }
