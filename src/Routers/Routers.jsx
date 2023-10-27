@@ -8,6 +8,8 @@ import Contact from "../Pages/Contact";
 import Appointments from "../Pages/Appointments";
 import Register from "../Pages/Register";
 import Login from "../Pages/Login";
+import Appointment from "../Pages/Appointment";
+import Cart from "../Pages/Cart";
 
 const Routers = createBrowserRouter([
   {
@@ -33,6 +35,14 @@ const Routers = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
+      {
+        path: "/appointment",
+        element: <Appointment />,
       },
       {
         path: "/appointments",

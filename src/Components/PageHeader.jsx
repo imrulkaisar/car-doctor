@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const PageHeader = ({ title }) => {
   return (
-    <div className="page-header bg-[url('https://tinyurl.com/y3bwu4n6')] bg-cover bg-center">
+    <div className="page-header bg-[url('https://tinyurl.com/y3bwu4n6')] bg-cover bg-center rounded-lg overflow-hidden">
       <div className="bg-overlay h-full py-28 text-white relative">
         <h1 className="text-white text-4xl text-center">{title}</h1>
         <div className="breadcrumbs absolute bottom-0 w-full">

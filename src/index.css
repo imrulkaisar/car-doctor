@@ -25,7 +25,16 @@
 
 @layer components {
   .container-area {
-    @apply container mx-auto;
+    @apply container mx-auto max-w-6xl;
+  }
+  .btn {
+    @apply border px-8 py-3 rounded-lg font-semibold;
+  }
+  .btn-primary {
+    @apply bg-primary border-primary text-white;
+  }
+  .btn-bordered {
+    @apply text-primary border-primary;
   }
 }
 
