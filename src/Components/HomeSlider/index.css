@@ -1,0 +1,39 @@
+.homeSwiper .swiper-button-next {
+  bottom: 20px;
+  right: 40px;
+  top: auto;
+}
+.homeSwiper .swiper-button-next::after {
+  font-size: 20px;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  border-radius: 50%;
+  border: 1px solid;
+}
+.homeSwiper .swiper-button-next:hover::after {
+  background: red;
+  border-color: red;
+}
+.homeSwiper .swiper-button-prev {
+  bottom: 20px;
+  right: 100px;
+  left: auto;
+  top: auto;
+}
+.homeSwiper .swiper-button-prev::after {
+  font-size: 20px;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  border-radius: 50%;
+  border: 1px solid;
+}
+.homeSwiper .swiper-button-prev:hover::after {
+  background: red;
+  border-color: red;
+}

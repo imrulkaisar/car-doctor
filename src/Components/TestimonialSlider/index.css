@@ -1,0 +1,33 @@
+.swiper-button-next::after {
+  font-size: 20px;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #151515;
+  border-radius: 50%;
+  border: 1px solid;
+  background: rgba(255, 255, 255, 0.5);
+}
+.testimonial-slider .swiper-button-next:hover::after {
+  background: red;
+  border-color: red;
+  color: #fff;
+}
+
+.swiper-button-prev::after {
+  font-size: 20px;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #151515;
+  border-radius: 50%;
+  border: 1px solid;
+  background: rgba(255, 255, 255, 0.5);
+}
+.testimonial-slider .swiper-button-prev:hover::after {
+  background: red;
+  border-color: red;
+  color: #fff;
+}

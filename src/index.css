@@ -21,6 +21,9 @@
   p {
     @apply text-text text-base font-light;
   }
+  img {
+    @apply max-w-full;
+  }
 }
 
 @layer components {
