@@ -1,14 +1,15 @@
 import { Outlet } from "react-router";
 import Header from "./Header";
+import Footer from "./Footer";
 
 const PageTemplate = () => {
   return (
     <>
       <Header />
-      <main className="container-area">
+      <main className="container-area min-h-[500px]">
         <Outlet />
       </main>
-      <h2>Footer</h2>
+      <Footer />
     </>
   );
 };

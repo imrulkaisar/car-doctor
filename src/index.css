@@ -19,7 +19,7 @@
     @apply text-4xl;
   }
   p {
-    @apply text-text text-base;
+    @apply text-text text-base font-light;
   }
 }
 
