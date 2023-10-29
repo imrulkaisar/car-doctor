@@ -4,7 +4,7 @@ import { FiArrowRight } from "react-icons/fi";
 import service1 from "./../assets/images/services/1.jpg";
 
 const ServiceCard = () => {
-  const link = `/service/`;
+  const link = `/service/details`;
   return (
     <article className="border rounded-lg p-5 space-y-4 hover:border-primary">
       <Link className="block" to={link}>

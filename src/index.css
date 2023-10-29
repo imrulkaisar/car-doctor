@@ -39,6 +39,12 @@
   .btn-bordered {
     @apply text-primary border-primary;
   }
+  .form-group {
+    @apply flex flex-col gap-1;
+  }
+  .form-input {
+    @apply py-3 px-5 rounded-md border focus:outline-none;
+  }
 }
 
 a.active {

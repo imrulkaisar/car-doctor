@@ -10,6 +10,8 @@ import Register from "../Pages/Register";
 import Login from "../Pages/Login";
 import Appointment from "../Pages/Appointment";
 import Cart from "../Pages/Cart";
+import ServiceDetails from "../Layouts/ServiceDetails";
+import Checkout from "../Pages/Checkout";
 
 const Routers = createBrowserRouter([
   {
@@ -29,6 +31,10 @@ const Routers = createBrowserRouter([
         element: <Services />,
       },
       {
+        path: "/service/:url",
+        element: <ServiceDetails />,
+      },
+      {
         path: "/blog",
         element: <Blog />,
       },
@@ -39,6 +45,10 @@ const Routers = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/checkout",
+        element: <Checkout />,
       },
       {
         path: "/appointment",
