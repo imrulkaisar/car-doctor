@@ -13,6 +13,7 @@ import Cart from "../Pages/Cart";
 import ServiceDetails from "../Layouts/ServiceDetails";
 import Checkout from "../Pages/Checkout";
 import AddService from "../Pages/AddService";
+import NotFound from "../Pages/NotFound";
 
 const Routers = createBrowserRouter([
   {
@@ -70,6 +71,10 @@ const Routers = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },
