@@ -1,7 +1,7 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 
-import { Navigation, Pagination } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 
 // Import Swiper styles
 import "swiper/css";
@@ -25,15 +25,20 @@ const TestimonialSlider = () => {
     <>
       <Swiper
         navigation={true}
-        slidesPerView={3}
+        slidesPerView={2}
         spaceBetween={30}
         loop={true}
         effect={"fade"}
         pagination={{
           clickable: true,
         }}
-        modules={[Navigation, Pagination]}
-        className="testimonial-slider min-h-max mb-10"
+        centeredSlides={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        modules={[Autoplay, Navigation, Pagination]}
+        className="testimonial-slider min-h-max"
       >
         <SwiperSlide>
           <Testimonial />

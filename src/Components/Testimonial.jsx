@@ -2,10 +2,17 @@ import Rating from "react-rating";
 import avatar from "./../assets/images/avatar1.jpeg";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 
+import quoteIcon from "./../assets/icons/quote.svg";
+
 const Testimonial = () => {
   return (
     <div className="p-5 border rounded-lg space-y-4">
-      <div className="flex items-center gap-3">
+      <div
+        style={{
+          backgroundImage: `url('${quoteIcon}')`,
+        }}
+        className="flex items-center gap-3 bg-no-repeat bg-right-top bg-contain"
+      >
         <img
           className="w-12 h-12 object-cover rounded-full border-2"
           src={avatar}

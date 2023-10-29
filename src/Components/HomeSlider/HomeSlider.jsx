@@ -1,7 +1,7 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 
-import { Navigation, Pagination } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 
 // Import Swiper styles
 import "swiper/css";
@@ -16,9 +16,16 @@ import sliderImg1 from "./../../assets/images/slider/1.jpg";
 import sliderImg2 from "./../../assets/images/slider/2.jpg";
 import sliderImg3 from "./../../assets/images/slider/3.jpg";
 import sliderImg4 from "./../../assets/images/slider/4.jpg";
+import { useRef } from "react";
 
 const HomeSlider = () => {
   const swiper = useSwiper();
+  const progressCircle = useRef(null);
+  const progressContent = useRef(null);
+  const onAutoplayTimeLeft = (s, time, progress) => {
+    progressCircle.current.style.setProperty("--progress", 1 - progress);
+    progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
+  };
 
   return (
     <>
@@ -29,7 +36,13 @@ const HomeSlider = () => {
         pagination={{
           clickable: true,
         }}
-        modules={[Navigation, Pagination]}
+        autoplay={{
+          delay: 4000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        }}
+        modules={[Autoplay, Navigation, Pagination]}
+        onAutoplayTimeLeft={onAutoplayTimeLeft}
         className="homeSwiper min-h-[500px] bg-secondary text-white rounded-lg overflow-hidden"
       >
         <SwiperSlide>
@@ -136,6 +149,13 @@ const HomeSlider = () => {
             </div>
           </div>
         </SwiperSlide>
+
+        <div className="autoplay-progress" slot="container-end">
+          <svg viewBox="0 0 48 48" ref={progressCircle}>
+            <circle cx="24" cy="24" r="20"></circle>
+          </svg>
+          <span ref={progressContent}></span>
+        </div>
       </Swiper>
     </>
   );
