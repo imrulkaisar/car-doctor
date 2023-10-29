@@ -12,6 +12,7 @@ import Appointment from "../Pages/Appointment";
 import Cart from "../Pages/Cart";
 import ServiceDetails from "../Layouts/ServiceDetails";
 import Checkout from "../Pages/Checkout";
+import AddService from "../Pages/AddService";
 
 const Routers = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ const Routers = createBrowserRouter([
       {
         path: "/appointments",
         element: <Appointments />,
+      },
+      {
+        path: "/add-service",
+        element: <AddService />,
       },
       {
         path: "/register",
