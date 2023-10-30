@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { FiArrowRight } from "react-icons/fi";
 
 import PageHeader from "../Components/PageHeader";
@@ -10,11 +10,25 @@ import step3 from "./../assets/icons/03.png";
 import downloadIcon from "./../assets/icons/download.svg";
 import videoPreview from "./../assets/images/video-preview.png";
 import Logo from "../Components/Logo";
+import { DataContext } from "../Contexts/DataContext";
 
 const ServiceDetails = () => {
+  const { services } = useContext(DataContext);
+  const { search } = useLocation();
+  const searchParams = new URLSearchParams(search);
+  const serviceId = searchParams.get("service_id");
+
+  const filterData = services.filter((service) => service._id === serviceId);
+  const serviceData = filterData[0];
+
+  const { _id, title, img, price, service_id, facility, description } =
+    serviceData || {};
+
+  console.log(serviceData);
+
   return (
     <>
-      <PageHeader title="Service Details" />
+      <PageHeader title={title} />
       <div className="grid lg:grid-cols-3 gap-8 py-20">
         <div className="content lg:col-span-2 space-y-5">
           <img
@@ -22,46 +36,21 @@ const ServiceDetails = () => {
             src={serviceImg}
             alt=""
           />
-          <h2>Unique Car Engine Service</h2>
-          <p>
-            There are many variations of passages of Lorem Ipsum available, but
-            the majority have suffered alteration in some form, by injected
-            humour, or randomised words which don't look even slightly
-            believable. If you are going to use a passage of Lorem Ipsum, you
-            need to be sure there isn't anything embarrassing hidden in the
-            middle of text.
-          </p>
+          <h2>{title} Service</h2>
+          <p>{description}</p>
 
           {/* service features */}
           <div className="grid grid-cols-2 gap-5">
-            <div className="card p-5 bg-bgGray rounded-lg border-t-4 border-primary">
-              <h4>Instant Car Services</h4>
-              <p className="leading-normal pt-2">
-                It uses a dictionary of over 200 Latin words, combined with a
-                model sentence structures.
-              </p>
-            </div>
-            <div className="card p-5 bg-bgGray rounded-lg border-t-4 border-primary">
-              <h4>24/7 Quality Service</h4>
-              <p className="leading-normal pt-2">
-                It uses a dictionary of over 200 Latin words, combined with a
-                model sentence structures.
-              </p>
-            </div>
-            <div className="card p-5 bg-bgGray rounded-lg border-t-4 border-primary">
-              <h4>Easy Customer Service</h4>
-              <p className="leading-normal pt-2">
-                It uses a dictionary of over 200 Latin words, combined with a
-                model sentence structures.
-              </p>
-            </div>
-            <div className="card p-5 bg-bgGray rounded-lg border-t-4 border-primary">
-              <h4>Quality Cost Service</h4>
-              <p className="leading-normal pt-2">
-                It uses a dictionary of over 200 Latin words, combined with a
-                model sentence structures.
-              </p>
-            </div>
+            {serviceData &&
+              facility.map((item, index) => (
+                <div
+                  key={index}
+                  className="card p-5 bg-bgGray rounded-lg border-t-4 border-primary"
+                >
+                  <h4>{item.name}</h4>
+                  <p className="leading-normal pt-2">{item.details}</p>
+                </div>
+              ))}
           </div>
 
           <p>
@@ -109,46 +98,20 @@ const ServiceDetails = () => {
           <div className="service-list p-8 rounded-lg bg-bgGray space-y-5">
             <h4 className="text-2xl">Services</h4>
             <ul className="space-y-3">
-              <li>
-                <Link className="group flex justify-between items-center px-5 py-3 bg-white rounded-md hover:bg-primary hover:text-white">
-                  <p className="text-secondary group-hover:text-white">
-                    Full Car Repair
-                  </p>
-                  <FiArrowRight className="text-2xl text-primary group-hover:text-white" />
-                </Link>
-              </li>
-              <li>
-                <Link className="group flex justify-between items-center px-5 py-3 bg-white rounded-md hover:bg-primary hover:text-white">
-                  <p className="text-secondary group-hover:text-white">
-                    Engine Repair
-                  </p>
-                  <FiArrowRight className="text-2xl text-primary group-hover:text-white" />
-                </Link>
-              </li>
-              <li>
-                <Link className="group flex justify-between items-center px-5 py-3 bg-white rounded-md hover:bg-primary hover:text-white">
-                  <p className="text-secondary group-hover:text-white">
-                    Automatic Services
-                  </p>
-                  <FiArrowRight className="text-2xl text-primary group-hover:text-white" />
-                </Link>
-              </li>
-              <li>
-                <Link className="group flex justify-between items-center px-5 py-3 bg-white rounded-md hover:bg-primary hover:text-white">
-                  <p className="text-secondary group-hover:text-white">
-                    Engine Oil Change
-                  </p>
-                  <FiArrowRight className="text-2xl text-primary group-hover:text-white" />
-                </Link>
-              </li>
-              <li>
-                <Link className="group flex justify-between items-center px-5 py-3 bg-white rounded-md hover:bg-primary hover:text-white">
-                  <p className="text-secondary group-hover:text-white">
-                    Battery Charge
-                  </p>
-                  <FiArrowRight className="text-2xl text-primary group-hover:text-white" />
-                </Link>
-              </li>
+              {services &&
+                services.map((service) => (
+                  <li key={service._id}>
+                    <Link
+                      to={`/service/?service_id=${service._id}`}
+                      className="group service flex justify-between items-center px-5 py-3 bg-white rounded-md hover:bg-primary hover:text-white"
+                    >
+                      <p className="text-secondary group-hover:text-white">
+                        {service.title}
+                      </p>
+                      <FiArrowRight className="text-2xl text-primary group-hover:text-white" />
+                    </Link>
+                  </li>
+                ))}
             </ul>
           </div>
 
@@ -205,9 +168,12 @@ const ServiceDetails = () => {
             </div>
           </div>
 
-          <h2>Price $250.00</h2>
+          <h2>Price ${price}</h2>
 
-          <Link className="btn btn-primary block text-center" to="/checkout">
+          <Link
+            to={`/checkout/service_id=${_id}`}
+            className="btn btn-primary block text-center"
+          >
             Proceed Checkout
           </Link>
         </div>

@@ -33,7 +33,7 @@ const Routers = createBrowserRouter([
         element: <Services />,
       },
       {
-        path: "/service/:url",
+        path: "/service/",
         element: <ServiceDetails />,
       },
       {

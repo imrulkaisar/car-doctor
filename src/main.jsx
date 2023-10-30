@@ -4,11 +4,14 @@ import "./index.css";
 import { RouterProvider } from "react-router";
 import Routers from "./Routers/Routers";
 import UserContextProvider from "./Contexts/UserContext";
+import DataContextProvider from "./Contexts/DataContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <UserContextProvider>
-      <RouterProvider router={Routers} />
+      <DataContextProvider>
+        <RouterProvider router={Routers} />
+      </DataContextProvider>
     </UserContextProvider>
   </React.StrictMode>
 );
