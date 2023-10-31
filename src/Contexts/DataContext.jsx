@@ -5,7 +5,8 @@ export const DataContext = createContext();
 
 const DataContextProvider = ({ children }) => {
   const [services, setServices] = useState([]);
-  const apiURI = "http://localhost:5349";
+  const [bookings, setBookings] = useState([]);
+  const apiURI = "http://localhost:3033";
 
   useEffect(() => {
     // loading services
@@ -18,11 +19,28 @@ const DataContextProvider = ({ children }) => {
       }
     };
 
+    // load bookings
+    const loadBookings = async () => {
+      try {
+        const response = await axios.get(`${apiURI}/bookings`);
+        if (response.status === 200) {
+          setBookings(response.data);
+        } else {
+          console.error("Request failed with status:", response.status);
+          // handle error or set appropriate state
+        }
+      } catch (error) {
+        console.error("An error occurred:", error);
+        // handle error or set appropriate state
+      }
+    };
+
     // function calls
     loadServices();
+    loadBookings();
   }, []);
 
-  const data = { apiURI, services };
+  const data = { apiURI, services, bookings, setBookings };
   return <DataContext.Provider value={data}>{children}</DataContext.Provider>;
 };
 

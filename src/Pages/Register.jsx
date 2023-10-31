@@ -8,7 +8,7 @@ import { UserContext } from "../Contexts/UserContext";
 const Register = () => {
   const { createUser } = useContext(UserContext);
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     const form = e.target;
 
@@ -18,7 +18,6 @@ const Register = () => {
 
     createUser(email, password)
       .then((res) => {
-        console.log(res.user);
         Swal.fire({
           icon: "success",
           title: "User created!",
@@ -27,6 +26,10 @@ const Register = () => {
         });
       })
       .catch((error) => console.error(error));
+
+    await updateUser({
+      displayName: name.value,
+    });
 
     console.log(name, email, password);
   };

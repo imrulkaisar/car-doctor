@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import { FiArrowRight } from "react-icons/fi";
 
 import PageHeader from "../Components/PageHeader";
-import serviceImg from "./../assets/images/services/service-details.jpeg";
 import step1 from "./../assets/icons/01.png";
 import step2 from "./../assets/icons/02.png";
 import step3 from "./../assets/icons/03.png";
@@ -24,7 +23,7 @@ const ServiceDetails = () => {
   const { _id, title, img, price, service_id, facility, description } =
     serviceData || {};
 
-  console.log(serviceData);
+  // console.log(serviceData);
 
   return (
     <>
@@ -33,7 +32,7 @@ const ServiceDetails = () => {
         <div className="content lg:col-span-2 space-y-5">
           <img
             className="w-full h-[350px] object-cover rounded-lg"
-            src={serviceImg}
+            src={img}
             alt=""
           />
           <h2>{title} Service</h2>
@@ -171,7 +170,7 @@ const ServiceDetails = () => {
           <h2>Price ${price}</h2>
 
           <Link
-            to={`/checkout/service_id=${_id}`}
+            to={`/checkout/?service_id=${_id}`}
             className="btn btn-primary block text-center"
           >
             Proceed Checkout

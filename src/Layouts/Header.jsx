@@ -2,8 +2,11 @@ import { Link, NavLink } from "react-router-dom";
 import Logo from "../Components/Logo";
 import cartIcon from "./../assets/icons/cart.svg";
 import searchIcon from "./../assets/icons/search.svg";
+import { useContext } from "react";
+import { DataContext } from "../Contexts/DataContext";
 
 const Header = () => {
+  const { bookings } = useContext(DataContext);
   return (
     <header>
       <div className="container-area py-5 flex gap-5 justify-between items-center">
@@ -33,7 +36,12 @@ const Header = () => {
         {/* quick links */}
         <div className="flex gap-4 items-center justify-end">
           <Link to="/cart">
-            <img src={cartIcon} alt="cart" />
+            <div className="relative">
+              <img src={cartIcon} alt="cart" />
+              <div className="count absolute bg-primary text-white -top-2 -right-3 px-[5px] rounded-full text-xs">
+                {bookings.length}
+              </div>
+            </div>
           </Link>
           <img src={searchIcon} alt="cart" />
           <Link
