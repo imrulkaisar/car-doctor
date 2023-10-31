@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import PageHeader from "../Components/PageHeader";
 import SocialLogin from "../Components/SocialLogin";
 import authenticationImg from "./../assets/images/authentication.png";
@@ -8,6 +8,10 @@ import Swal from "sweetalert2";
 
 const Login = () => {
   const { signIn } = useContext(UserContext);
+  const navigate = useNavigate();
+  const { state } = useLocation();
+
+  console.log(state);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -26,6 +30,7 @@ const Login = () => {
             showCloseButton: true,
           });
         }
+        navigate(state ? `${state.pathname}${state.search}` : "/profile");
       })
       .catch((error) => {
         console.error(error);

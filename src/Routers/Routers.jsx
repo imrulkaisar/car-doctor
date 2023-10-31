@@ -14,6 +14,9 @@ import ServiceDetails from "../Layouts/ServiceDetails";
 import Checkout from "../Pages/Checkout";
 import AddService from "../Pages/AddService";
 import NotFound from "../Pages/NotFound";
+import PrivateRouter from "./PrivateRouter";
+import { Profiler } from "react";
+import Profile from "../Pages/Profile";
 
 const Routers = createBrowserRouter([
   {
@@ -46,11 +49,19 @@ const Routers = createBrowserRouter([
       },
       {
         path: "/cart",
-        element: <Cart />,
+        element: (
+          <PrivateRouter>
+            <Cart />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/checkout",
-        element: <Checkout />,
+        element: (
+          <PrivateRouter>
+            <Checkout />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/appointment",
@@ -71,6 +82,14 @@ const Routers = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/profile",
+        element: (
+          <PrivateRouter>
+            <Profile />
+          </PrivateRouter>
+        ),
       },
       {
         path: "*",

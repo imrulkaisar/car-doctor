@@ -1,12 +1,15 @@
 import { Link, NavLink } from "react-router-dom";
+import { FiUser } from "react-icons/fi";
 import Logo from "../Components/Logo";
 import cartIcon from "./../assets/icons/cart.svg";
 import searchIcon from "./../assets/icons/search.svg";
 import { useContext } from "react";
 import { DataContext } from "../Contexts/DataContext";
+import { UserContext } from "../Contexts/UserContext";
 
 const Header = () => {
   const { bookings } = useContext(DataContext);
+  const { user, loading } = useContext(UserContext);
   return (
     <header>
       <div className="container-area py-5 flex gap-5 justify-between items-center">
@@ -35,6 +38,20 @@ const Header = () => {
 
         {/* quick links */}
         <div className="flex gap-4 items-center justify-end">
+          {user?.accessToken ? (
+            <Link to="/profile">
+              {user && (
+                // <img
+                //   className="w-10 border aspect-square rounded-full"
+                //   src={user.photoURL}
+                //   alt={user.displayName}
+                // />
+                <FiUser className="text-2xl text-text" />
+              )}
+            </Link>
+          ) : (
+            <button className="p-1 border-b border-secondary">Login</button>
+          )}
           <Link to="/cart">
             <div className="relative">
               <img src={cartIcon} alt="cart" />
