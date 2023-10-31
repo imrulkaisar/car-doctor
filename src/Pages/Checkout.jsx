@@ -58,7 +58,9 @@ const Checkout = () => {
 
           const loadBookings = async () => {
             try {
-              const response = await axios.get(`${apiURI}/bookings`);
+              const response = await axios.get(
+                `${apiURI}/bookings/?email=${user?.email}`
+              );
               if (response.status === 200) {
                 setBookings(response.data);
               } else {
